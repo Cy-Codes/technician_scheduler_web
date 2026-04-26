@@ -1,0 +1,38 @@
+[package]
+name = "backend"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "backend"
+path = "src/main.rs"
+
+[dependencies]
+app_core = { path = "../core" }
+frontend = { path = "../frontend", features = ["ssr"] }
+axum = "0.8.0"
+leptos = { version = "0.8.0", features = ["ssr"] }
+leptos_axum = "0.8.0"
+leptos_meta = { version = "0.8.0", features = ["ssr"] }
+leptos_router = { version = "0.8.0", features = ["ssr"] }
+tokio = { version = "1", features = ["rt-multi-thread"] }
+
+[package.metadata.leptos]
+# cargo-leptos looks here for build configuration; points to frontend as the lib crate
+lib-package = "frontend"
+output-name = "technician_scheduler_web"
+site-root = "target/site"
+site-pkg-dir = "pkg"
+# paths are relative to workspace root, since cargo leptos runs from there
+style-file = "crates/frontend/style/main.scss"
+assets-dir = "crates/frontend/public"
+site-addr = "127.0.0.1:3000"
+reload-port = 3001
+end2end-cmd = "npx playwright test"
+end2end-dir = "end2end"
+browserquery = "defaults"
+env = "DEV"
+# no bin-features needed: backend is always native, ssr comes via the frontend dep
+lib-features = ["hydrate"]
+lib-default-features = false
+lib-profile-release = "wasm-release"

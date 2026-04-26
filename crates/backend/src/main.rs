@@ -1,7 +1,8 @@
+mod routes;
+
 use axum::Router;
 use frontend::{shell, App};
 use leptos::config::get_configuration;
-use leptos::prelude::*;
 use leptos_axum::{generate_route_list, LeptosRoutes};
 
 #[tokio::main]
@@ -12,6 +13,7 @@ async fn main() {
     let routes = generate_route_list(App);
 
     let app = Router::new()
+        .nest("/api/technicians", routes::technicians::router())
         .leptos_routes(&leptos_options, routes, {
             let options = leptos_options.clone();
             move || shell(options.clone())

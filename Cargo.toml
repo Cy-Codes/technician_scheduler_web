@@ -6,6 +6,24 @@ members = [
 ]
 resolver = "2"
 
+[[workspace.metadata.leptos]]
+name = "technician-scheduler"
+bin-package = "backend"
+lib-package = "frontend"
+output-name = "technician_scheduler_web"
+site-root = "target/site"
+site-pkg-dir = "pkg"
+style-file = "crates/frontend/style/main.scss"
+assets-dir = "crates/frontend/public"
+site-addr = "127.0.0.1:3000"
+reload-port = 3001
+end2end-cmd = "npx playwright test"
+end2end-dir = "end2end"
+browserquery = "defaults"
+lib-features = ["hydrate"]
+lib-default-features = false
+lib-profile-release = "wasm-release"
+
 [profile.wasm-release]
 inherits = "release"
 opt-level = 'z'

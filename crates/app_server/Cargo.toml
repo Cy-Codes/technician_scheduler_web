@@ -1,18 +1,20 @@
 [package]
-name = "backend"
+name = "app_server"
 version = "0.1.0"
 edition = "2021"
 
 [[bin]]
-name = "backend"
+name = "app_server"
 path = "src/main.rs"
 
 [dependencies]
-app_core = { path = "../core" }
-frontend = { path = "../frontend", features = ["ssr"] }
+app_core = { path = "../app_core" }
+app_client = { path = "../app_client", features = ["ssr"] }
 axum = "0.8.0"
 leptos = { version = "0.8.0", features = ["ssr"] }
 leptos_axum = "0.8.0"
 leptos_meta = { version = "0.8.0", features = ["ssr"] }
 leptos_router = { version = "0.8.0", features = ["ssr"] }
 tokio = { version = "1", features = ["rt-multi-thread"] }
+sqlx = { version = "0.8.6", features = ["runtime-tokio", "postgres", "time", "macros"] }
+dotenvy = "0.15.7"

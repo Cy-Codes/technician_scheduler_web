@@ -1,20 +1,19 @@
 [workspace]
 members = [
-    "crates/core",
-    "crates/backend",
-    "crates/frontend",
-]
+    "crates/app_core",
+    "crates/app_server",
+    "crates/app_client"]
 resolver = "2"
 
 [[workspace.metadata.leptos]]
 name = "technician-scheduler"
-bin-package = "backend"
-lib-package = "frontend"
+bin-package = "app_server"
+lib-package = "app_client"
 output-name = "technician_scheduler_web"
 site-root = "target/site"
 site-pkg-dir = "pkg"
-style-file = "crates/frontend/style/main.scss"
-assets-dir = "crates/frontend/public"
+style-file = "crates/app_client/style/main.scss"
+assets-dir = "crates/app_client/public"
 site-addr = "127.0.0.1:3000"
 reload-port = 3001
 end2end-cmd = "npx playwright test"

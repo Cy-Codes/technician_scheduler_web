@@ -1,7 +1,7 @@
 mod routes;
 
 use axum::Router;
-use frontend::{shell, App};
+use app_client::{shell, App};
 use leptos::config::get_configuration;
 use leptos_axum::{generate_route_list, LeptosRoutes};
 

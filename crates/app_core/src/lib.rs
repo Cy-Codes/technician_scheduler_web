@@ -10,7 +10,12 @@ pub struct Technician {
     #[serde(with = "time::serde::rfc3339")]
     pub created_at: OffsetDateTime,
     #[serde(with = "time::serde::rfc3339")]
-    pub updated_at: OffsetDateTime
+    pub updated_at: OffsetDateTime,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CreateTechnician {
+    pub name: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -18,10 +23,10 @@ pub struct Service {
     pub id: i32,
     pub service_type: HvacServiceType,
     pub price: i32, // Stored as cents.
-    #[serde(with = "time::serde::rfc3339")]
-    pub created_at: OffsetDateTime,
-    #[serde(with = "time::serde::rfc3339")]
-    pub updated_at: OffsetDateTime
+    #[serde(with = "time::serde::rfc3339::option")]
+    pub created_at: Option<OffsetDateTime>,
+    #[serde(with = "time::serde::rfc3339::option")]
+    pub updated_at: Option<OffsetDateTime>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -29,7 +34,7 @@ pub enum HvacServiceType {
     Maintenance,
     Installation,
     Repair,
-    Emergency
+    Emergency,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -41,7 +46,7 @@ pub struct Customer {
     #[serde(with = "time::serde::rfc3339")]
     pub created_at: OffsetDateTime,
     #[serde(with = "time::serde::rfc3339")]
-    pub updated_at: OffsetDateTime
+    pub updated_at: OffsetDateTime,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -56,5 +61,5 @@ pub struct Appointment {
     #[serde(with = "time::serde::rfc3339")]
     pub created_at: OffsetDateTime,
     #[serde(with = "time::serde::rfc3339")]
-    pub updated_at: OffsetDateTime
+    pub updated_at: OffsetDateTime,
 }

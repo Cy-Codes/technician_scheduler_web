@@ -8,9 +8,9 @@ use leptos_axum::{generate_route_list, LeptosRoutes};
 use sqlx::PgPool;
 
 #[derive(Clone)]
-pub struct AppState {
-    pub pool: sqlx::PgPool,
-    pub leptos_options: LeptosOptions,
+struct AppState {
+    pool: sqlx::PgPool,
+    leptos_options: LeptosOptions,
 }
 
 impl axum::extract::FromRef<AppState> for LeptosOptions {

@@ -1,3 +1,5 @@
+#[cfg(debug_assertions)]
+mod macros;
 mod routes;
 
 use crate::routes::technician;

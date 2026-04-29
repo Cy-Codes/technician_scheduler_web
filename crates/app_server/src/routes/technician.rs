@@ -1,6 +1,6 @@
-use crate::AppState;
 use app_core::Technician;
 
+use crate::AppState;
 use axum::extract::State;
 use axum::response::IntoResponse;
 use axum::routing::get;
@@ -59,7 +59,6 @@ mod tests {
         let response = fetch_all(State(state)).await.into_response();
         assert_eq!(response.status(), StatusCode::OK);
         let technicians = parse_response::<Vec<Technician>>(response).await;
-
         assert_eq!(true, technicians.is_empty());
     }
 
